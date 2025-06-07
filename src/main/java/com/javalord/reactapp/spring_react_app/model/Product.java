@@ -10,6 +10,8 @@ public class Product {
     private int id;
     private String name;
     private String description;
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
     private String image;
     private double price;
     private int availableQuantity;

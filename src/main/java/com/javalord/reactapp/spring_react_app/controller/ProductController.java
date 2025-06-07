@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class ProductController {
     public ResponseEntity<?> createProduct(
             @RequestParam("data") String product,
             @RequestParam(value = "file", required = false) MultipartFile file
-            ) throws JsonProcessingException {
+            ) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         Product p = objectMapper.readValue(product, Product.class);
 

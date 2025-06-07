@@ -5,18 +5,29 @@ import com.javalord.reactapp.spring_react_app.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 @Service
 public class ProductService {
 
     private ProductRepository productRepository;
+    private FileService fileService;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, FileService fileService) {
         this.productRepository = productRepository;
+        this.fileService = fileService;
     }
 
-    public Product createProduct(Product product, MultipartFile file) {
+    public Product createProduct(Product product, MultipartFile file) throws IOException {
+        String stringBytes = Base64.getEncoder().encodeToString(file.getBytes());
+        String image = "data:image/png;base64," + stringBytes;
+
+        System.out.println("IMAGE: " + image);
+
+        product.setImage(image);
+
         return productRepository.save(product);
     }
 
