@@ -1,6 +1,5 @@
 package com.javalord.reactapp.spring_react_app.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javalord.reactapp.spring_react_app.model.Product;
 import com.javalord.reactapp.spring_react_app.service.ProductService;

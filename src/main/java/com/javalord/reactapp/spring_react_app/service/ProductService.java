@@ -20,12 +20,9 @@ public class ProductService {
         this.fileService = fileService;
     }
 
-    public Product createProduct(Product product, MultipartFile file) throws IOException {
+    public Product createProduct(Product product, MultipartFile file) throws IOException{
         String stringBytes = Base64.getEncoder().encodeToString(file.getBytes());
         String image = "data:image/png;base64," + stringBytes;
-
-        System.out.println("IMAGE: " + image);
-
         product.setImage(image);
 
         return productRepository.save(product);
