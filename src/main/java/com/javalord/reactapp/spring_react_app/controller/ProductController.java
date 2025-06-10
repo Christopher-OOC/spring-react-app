@@ -29,8 +29,6 @@ public class ProductController {
         ObjectMapper objectMapper = new ObjectMapper();
         Product p = objectMapper.readValue(product, Product.class);
 
-        System.out.println("File name: " + file.getOriginalFilename());
-
         Product returnValue = productService.createProduct(p, file);
         return ResponseEntity.ok("success");
     }
@@ -45,8 +43,6 @@ public class ProductController {
     public ResponseEntity<?> findAllProducts(
             @RequestParam(value = "search", defaultValue = "", required = false) String search
             ) throws InterruptedException {
-
-        Thread.sleep(3000);
 
         List<Product> products = productService.findAllProducts(search);
         return ResponseEntity.ok(products);

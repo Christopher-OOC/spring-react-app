@@ -10,25 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "categories")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
-    @OneToOne(fetch = FetchType.EAGER)
-    private Cart cart;
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Order> orders = new ArrayList<>();
     @OneToMany(fetch = FetchType.EAGER)
-    private List<Role> roles = new ArrayList<>();
-
-
+    private List<Product> product = new ArrayList<>();
 }
